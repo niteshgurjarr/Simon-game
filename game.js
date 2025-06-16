@@ -8,13 +8,16 @@ var level = 0;
 
 $(document).on("keydown click", function () {
     if (!started) {
-        $("#level-title").text("Level " + level);
-        nextSequence();
-        started = true;
-        $("h3").hide();
+        startGame();
     }
+});
 
-})
+function startGame() {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+    $("h3").hide();
+}
 
 
 $(".btn").click(function (event) {
@@ -87,6 +90,10 @@ function startOver() {
     level = 0;
     started = false;
     gamePattern = [];
+
+    setTimeout(() => {
+        $("#level-title").text("Game Over, Press Any Key or Tap to Restart");
+    }, 500);
 }
 
 
